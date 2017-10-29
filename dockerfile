@@ -1,16 +1,13 @@
-FROM ubuntu:16.04
+FROM armv7/armhf-ubuntu
 
-MAINTAINER InnovativeInventor
+MAINTAINER ragefan
 
-RUN apt-get update && apt-get install -y openssh-server
-RUN apt-get install nano
-RUN apt-get install -y curl
-RUN apt-get install -y whiptail
-RUN apt-get install -y net-tools
-RUN apt-get install -y iptables-persistent
-RUN apt-get install iproute2
-RUN apt-get install locales
-RUN apt-get install -y language-pack-en
+RUN apt-get update && \
+DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server nano curl whiptail net-tools locales language-pack-en
+
+#RUN apt-get install -y iptables-persistent
+#RUN apt-get install iproute2
+
 RUN mkdir /var/run/sshd
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
