@@ -87,7 +87,7 @@ if [[ -n "$dockerisfree" ]]; then
             # Installing
             {
             docker rm pivpn
-            docker run --name=pivpn -d -p $port:22 -p $forward:$expose innovativeinventor/docker-pivpn
+            docker run --name=pivpn -d -p $port:22 -p $forward:$expose ragefan/raspivpn
             ufw allow $forward
             sudo bash assets/random.sh -d pivpn -a ssh
             } &> /dev/null
