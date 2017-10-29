@@ -1,5 +1,5 @@
 #!/bin/bash
-# Docker script is from ragefab/raspivpn
+# Docker script is from ragefan/raspivpn
 
 # Making sure running with sudo privilges
 sudo -v
