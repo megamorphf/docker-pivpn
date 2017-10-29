@@ -1,6 +1,8 @@
 # PiVPN Docker
 A simple docker container that sets up pivpn.
 
+This adaptation is performed for raspberry Pi based on InnovativeInventor/docker-pivpn
+
 # Install and Config
 Type in:
  `curl -s -L https://bit.ly/2vpfRx9 | sudo bash`
