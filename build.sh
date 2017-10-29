@@ -1,5 +1,5 @@
 #!/bin/bash
-# Docker script is from InnovativeInventor/docker-pivpn
+# Docker script is from ragefab/raspivpn
 
 # Making sure running with sudo privilges
 sudo -v
@@ -24,7 +24,7 @@ echo "Running silent-build.sh at date +%c" >> /var/log/docker-pivpn.log
 
 # Pulling from docker
 {
-docker pull innovativeinventor/docker-pivpn
+docker pull ragefan/raspivpn
 } &> /dev/null
 
 # Getting random.sh file
@@ -123,7 +123,7 @@ if [[ -n "$dockerisfree" ]]; then
 
 	# Creating everything, then exiting to prevent errors
     {
-    docker run --name=pivpn$num -d -p $port:22 -p $forward:$expose innovativeinventor/docker-pivpn
+    docker run --name=pivpn$num -d -p $port:22 -p $forward:$expose ragefan/raspivpn
     ufw allow $forward
     sudo bash assets/random.sh -d pivpn$num -a ssh
     } &> /dev/null
@@ -141,7 +141,7 @@ fi
 
 # Installing
 {
-docker run --name=pivpn -d -p $port:22 -p $forward:$expose innovativeinventor/docker-pivpn
+docker run --name=pivpn -d -p $port:22 -p $forward:$expose ragefan/raspivpn
 ufw allow $forward
 sudo bash assets/random.sh -d pivpn -a ssh
 } &> /dev/null
