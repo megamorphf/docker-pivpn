@@ -1,9 +1,9 @@
 FROM armv7/armhf-ubuntu
 
-MAINTAINER ragefan
+MAINTAINER megamorphf
 
 RUN apt-get update && \
-DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server nano curl whiptail net-tools locales language-pack-en
+DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server nano curl whiptail net-tools locales language-pack-en git
 
 #RUN apt-get install -y iptables-persistent
 #RUN apt-get install iproute2
@@ -19,5 +19,13 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 
 RUN adduser root sudo
 
-EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
+# copy data
+
+COPY ./assets/motd /etc/
+COPY ./assets/random.sh /
+COPY ./assets/run.sh /
+
+RUN chmod a+x /random.sh /run.sh
+
+EXPOSE 221614
+CMD ["/run.sh"]
